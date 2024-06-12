@@ -422,6 +422,8 @@ def run_lammps(lammps_folder,
         extruderOnBarrierRight  = []
         if 'barriers' in loop_extrusion_dynamics:
             for barrier in loop_extrusion_dynamics['barriers']:
+                if loop_extrusion_dynamics['barriers_left_permeability'][loop_extrusion_dynamics['barriers'].index(barrier)] != 1.0 or loop_extrusion_dynamics['barriers_right_permeability'][loop_extrusion_dynamics['barriers'].index(barrier)] != 1.0:                                                                                                                                                        
+                    barriersOccupation.append(barrier)
                 extruderOnBarrierLeft.append(-1)
                 extruderOnBarrierRight.append(-1)
             
@@ -717,11 +719,12 @@ def run_lammps(lammps_folder,
 
                 # Routine to relocate extruder
                 if extruders_to_relocate[extruder] == 0 or force_extruders_to_relocate[extruder] == 0:  # 0 if the extruder needs to be relocated and 1 if it doesn't!
-                    print("Relocating extruder ",extruder," lifetime ",extruders_lifetimes[extruder]," Target-lifetime ",extruders_target_lifetimes[extruder])                    
+                    print("Relocating extruder ",extruder," lifetime ",extruders_lifetimes[extruder]," Target-lifetime ",extruders_target_lifetimes[extruder])
+                    print("Barriers",loop_extrusion_dynamics['barriers'])
                     tmp_extruders_positions = [extruders_positions[x] for x in range(len(extruders_positions)) if x != extruder]
                     occupied_positions = list(chain(*tmp_extruders_positions))+barriersOccupation
-                    print("Occupied_positions (Extruder excluded)",sorted(occupied_positions))
-
+                    print("Occupied_positions (Extruder excluded)",occupied_positions)                    
+                    
                     extruders_positions[extruder]    = draw_loop_extruder_loading_site(loop_extrusion_dynamics['chrlength'][nchr-1],distances)
                     extruders_positions[extruder][0] = extruders_positions[extruder][0] + start
                     extruders_positions[extruder][1] = extruders_positions[extruder][1] + start
