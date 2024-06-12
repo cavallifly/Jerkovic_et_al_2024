@@ -1,0 +1,3 @@
+threshold=100
+
+sort -k 2,2n -k 3,3n -k 1,1d N*bed E*bed | awk '{print $1,$2-150,$2+150}' | awk -v t=${threshold} '{chr[NR]=$1; start[NR]=$2; end[NR]=$3; discard[NR]=0; n=NR}END{for(i=1;i<=n;i++){if(discard[i]==1){continue};for(j=i+1;j<=n;j++){if(discard[j]==1){continue};if(chr[i]!=chr[j]){continue}; d=sqrt((start[i]-start[j])*(start[i]-start[j])); if(d>(300+300+t+1)){continue}; for(k=start[i];k<=end[i];k++){for(l=start[j];l<=end[j];l++){dp=sqrt((k-l)*(k-l));if(dp<d){d=dp};if(d==0){break}}}; if(d<t){discard[j]=1; print chr[j],start[j],end[j],d,"discarded",c++,chr[i],start[i],end[i]}}};for(m=1;m<=n;m++){if(discard[m]==0){printf("%s\t%d\t%d\n",chr[m],start[m]+150,start[m]+1)}}}'
