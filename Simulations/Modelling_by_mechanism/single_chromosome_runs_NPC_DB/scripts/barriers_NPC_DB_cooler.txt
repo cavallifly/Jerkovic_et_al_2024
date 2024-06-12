@@ -1,0 +1,83 @@
+#Overlap
+#chr18 53740000 53745000 1 -> chr18 ???????? ???????? ? - --> distance = ????
+#chr18 53960000 53965000 2 -> chr18 53970574 53975574 ? - --> distance = ????
+#chr18 54910000 54915000 3 -> chr18 54913048 54918048 ? - --> distance = 0 3'
+#chr18 54985000 54990000 4 -> chr18 54988048 54993048 ? - --> distance = 0 Promoter
+#chr18 55545000 55550000 6 -> chr18 55544055 55552304 ? - --> distance = 0 EnhA
+#chr18 56340000 56345000 5 -> chr18 56340574 56345574 ? - --> distance = 0 
+#chr18 56560000 56565000 7 -> chr18 ???????? ???????? ? - --> distance = ????
+
+#maxima of cooler/Giorgio's INS profiles
+#chr18 53740000 53745000 1 
+#chr18 53960000 53965000 2 
+#chr18 54910000 54915000 3
+#chr18 54985000 54990000 4
+#chr18 55545000 55550000 6
+#chr18 56340000 56345000 5
+#chr18 56560000 56565000 7
+
+#Insulation_points_NPC_WT_from_Ivanas_manual_annotation_20230607mod9_plus_RNAPolII_20230703.bedGraph
+#chr18 53970574	53975574 -
+#chr18 53970574	53975574 +
+#chr18 56340574	56345574 -
+#chr18 56340574	56345574 +
+#chr18 56580574	56585574 -
+#chr18 56580574	56585574 +
+#chr18 54888048 54893048 Lpermeability -	barrierLifetime/48
+#chr18 54888048 54893048 Rpermeability +	barrierLifetime/48
+#chr18 54893048 54898048 Lpermeability -	barrierLifetime/48
+#chr18 54893048 54898048 Rpermeability +	barrierLifetime/48
+#chr18 54898048 54903048 Lpermeability -	barrierLifetime/48
+#chr18 54898048 54903048 Rpermeability +	barrierLifetime/48
+#chr18 54903048 54908048 Lpermeability -	barrierLifetime/48
+#chr18 54903048 54908048 Rpermeability +	barrierLifetime/48
+#chr18 54908048 54913048 Lpermeability -	barrierLifetime/48
+#chr18 54908048 54913048 Rpermeability +	barrierLifetime/48
+#chr18 54913048 54918048 Lpermeability -	barrierLifetime/48
+#chr18 54913048 54918048 Rpermeability +	barrierLifetime/48
+#chr18 54918048 54923048 Lpermeability -	barrierLifetime/48
+#chr18 54918048 54923048 Rpermeability +	barrierLifetime/48
+#chr18 54923048 54928048 Lpermeability -	barrierLifetime/48
+#chr18 54923048 54928048 Rpermeability +	barrierLifetime/48
+#chr18 54928048 54933048 Lpermeability -	barrierLifetime/48
+#chr18 54928048 54933048 Rpermeability +	barrierLifetime/48
+#chr18 54933048 54938048 Lpermeability -	barrierLifetime/48
+#chr18 54933048 54938048 Rpermeability +	barrierLifetime/48
+#chr18 54938048 54943048 Lpermeability -	barrierLifetime/48
+#chr18 54938048 54943048 Rpermeability +	barrierLifetime/48
+#chr18 54943048 54948048 Lpermeability -	barrierLifetime/48
+#chr18 54943048 54948048 Rpermeability +	barrierLifetime/48
+#chr18 54948048 54953048 Lpermeability -	barrierLifetime/48
+#chr18 54948048 54953048 Rpermeability +	barrierLifetime/48
+#chr18 54953048 54958048 Lpermeability -	barrierLifetime/48
+#chr18 54953048 54958048 Rpermeability +	barrierLifetime/48
+#chr18 54958048 54963048 Lpermeability -	barrierLifetime/48
+#chr18 54958048 54963048 Rpermeability +	barrierLifetime/48
+#chr18 54963048 54968048 Lpermeability -	barrierLifetime/48
+#chr18 54963048 54968048 Rpermeability +	barrierLifetime/48
+#chr18 54968048 54973048 Lpermeability -	barrierLifetime/48
+#chr18 54968048 54973048 Rpermeability +	barrierLifetime/48
+#chr18 54973048 54978048 Lpermeability -	barrierLifetime/48
+#chr18 54973048 54978048 Rpermeability +	barrierLifetime/48
+#chr18 54978048 54983048 Lpermeability -	barrierLifetime/48
+#chr18 54978048 54983048 Rpermeability +	barrierLifetime/48
+#chr18 54983048 54988048 Lpermeability -	barrierLifetime/48
+#chr18 54983048 54988048 Rpermeability +	barrierLifetime/48
+#chr18 54988048 54993048 Lpermeability -	barrierLifetime/48
+#chr18 54988048 54993048 Rpermeability +	barrierLifetime/48  #Prom
+#chr18 55130571 55137516 0.8           + barrierLifetime/4 #C2
+#chr18 55194331 55199818 0.8           + barrierLifetime/4 #C3
+#chr18 55544055 55552304 0.8           - barrierLifetime/4 #EnhA
+#chr18 55544055 55552304 0.8           + barrierLifetime/4 #EnhA
+#chr18 55758514 55765215 0.8           + barrierLifetime/4 #C5
+#chr18 55811387 55818779 0.8           - barrierLifetime/4 #EnhB
+#chr18 55811387 55818779 0.8           + barrierLifetime/4 #EnhB
+
+9 9
+53 53
+243 243
+258 258
+370 370
+529 529
+573 573
+
