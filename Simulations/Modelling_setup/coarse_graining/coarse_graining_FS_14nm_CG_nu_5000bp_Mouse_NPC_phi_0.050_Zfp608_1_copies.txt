@@ -1,0 +1,40 @@
+Fine scale model is the 10-nm fiber
+DNA content to simulate 3400000bp
+
+nuFS (DNA content of a monomer in b) = 1000 bp
+bFS (Diameter of a bead in nm) = 14 nm
+lkFS (Kuhn length of the chain in nm) = 28 nm
+NFS (Number of monomers to represent the chromosome) = 3400
+NkFS (Number if Kuhn lengths of the chain) = 1700
+rhoFS (Genome density in bp/nm³) = 0.011
+rhokFS (Genome density in Kuhn lengths bp/nm³) = 5.5e-06
+LFS (Polymer contour length) = 47600 nm
+LeFS (Entanglement length of the chain in nm) = 693412 nm
+Number of monomers in a Kuhn length FS = 2
+lkFSnuFS_bFS (DNA content of a Kuhn length FS) = 2000 bp
+
+Coarse-grained model at 5000 bp
+Volume of the  nucleus 
+Genome length in  5451042740
+phiCG (Volumetric density of the chain in the CG model  parameters) = 0.050
+
+nuCG (DNA content of a monomer in b) = 5000 bp
+bCG (Diameter of a bead in nm) = 35.1459 nm
+lkCG (Kuhn length of the chain in nm) = 55.7773 nm
+NCG (Number of monomers to represent the chromosome) = 680
+sideCG (Size of the cubic simulation box for the CG model in monomer diameters) = 19.2377 # 9.61885
+NkCG (Number if Kuhn lengths of the chain) = 428.476
+rhoCG (Genome density in bp/nm³) = 0.011 nm
+rhokCG (Genome density in Kuhn lengths bp/nm³) = 1.38624e-06 nm
+LCG (Polymer contour length) = 23899 nm
+LeCG (Entanglement length of the chain in nm) = 347971 nm
+Number of monomers in a Kuhn length CG = 1.58702
+Number of monomers in a persistence length CG = 0.793511
+lkCGnuCG_bCG (DNA content of a Kuhn length CG) = 7936.5 bp
+
+These quantities have to be the same in the FS and CG models:
+rho (The Genome densities of FS and CG are imposed to be the same) = 0.011
+Ratio of L and Le FS = 0.0686461
+Ratio of L and Le CG = 0.068681
+Volume of the simulation box FS 3.09091e+08
+Volume of the simulation box CG 3.09091e+08
