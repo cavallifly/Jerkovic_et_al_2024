@@ -1,0 +1,12 @@
+LICENSE
+README.rst
+setup.py
+TADphys.egg-info/PKG-INFO
+TADphys.egg-info/SOURCES.txt
+TADphys.egg-info/dependency_links.txt
+TADphys.egg-info/top_level.txt
+tadphys/__init__.py
+tadphys/_version.py
+tadphys/modelling/LAMMPS_CONFIG.py
+tadphys/modelling/__init__.py
+tadphys/modelling/lammps_modelling.py
