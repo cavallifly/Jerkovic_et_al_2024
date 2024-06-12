@@ -23,7 +23,7 @@ rsync -avz ${scriptsDir}/chrom_sizes.txt ../mishaDB/trackdb/mm10/
 
 outFile=correlation_analysis_${cellType}.log
 
-for dir in $(ls -1 | grep -v "log\|out\|_v")
+for dir in $(ls -1 | grep -v "log\|out")
 do
     echo $dir
     echo
@@ -91,7 +91,7 @@ do
     sed -e "s/XXXdirXXX/${dir}/g" ${scriptsDir}/05_jobscript_create_composite_figure.cmd > _tmp_${dir}.cmd
     bash _tmp_${dir}.cmd ${dir} &>> 05_create_composite_figure.out ; rm -fr _tmp_${dir}.cmd
     echo
-    continue
+
     echo "06 - Zip the directories for each replica's folder to save storage space"
     cd $dir
     for replica in $(seq 1 1 100);
