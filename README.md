@@ -3,3 +3,8 @@ Scripts for the manuscript Jerkovic_et_al_2024 https://www.biorxiv.org/content/1
 
 3D-FISH distance measurements were analyzed using the Matlab scripts in:
 https://github.com/QuentinSzabo/3DFISHdistances
+
+Contributors
+************
+
+TADbit is currently developed at the  `CavalliLab <http://www.marciuslab.org>`_ with the contributions of Marco Di Stefano and Giorgio L. Papadopoulos.
