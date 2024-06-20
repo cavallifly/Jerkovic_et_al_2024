@@ -9,4 +9,4 @@ https://github.com/QuentinSzabo/3DFISHdistances
 **Contributors**
 ************
 
-TADbit is currently developed at the [Cavalli Lab](https://www.igh.cnrs.fr/en/research/departments/genome-dynamics/chromatin-and-cell-biology) with the contributions of Marco Di Stefano and Giorgio L. Papadopoulos.
+TADbit is currently developed at the [Cavalli Lab](https://www.igh.cnrs.fr/en/research/departments/genome-dynamics/chromatin-and-cell-biology) with the contributions of Marco Di Stefano, Hadrien Reboul, and Giorgio L. Papadopoulos.
