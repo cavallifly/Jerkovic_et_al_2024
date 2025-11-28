@@ -16,11 +16,11 @@ rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differ
 rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_zmin-100_zmax100/*NPC_dCTCF_vs_NPC_DA* ./panelF/
 
 ### ATAC-seq quantification panelE
-rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/ChIPseq_quantification/Ivana_ATACseq/meanAndStdDev_normalizedCounts_using_DEseq2_for_ANOVA_wt_dCTCF_with_stats.tsv ./PanelE/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/ChIPseq_quantification/Ivana_ATACseq/meanAndStdDev_normalizedCounts_using_DEseq2_for_ANOVA_wt_dCTCF_with_stats.tsv ./panelE/
 
-rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/ChIPseq_quantification/Ivana_ATACseq/results_from_DEseq2_analysis.tsv ./PanelE/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/ChIPseq_quantification/Ivana_ATACseq/results_from_DEseq2_analysis.tsv ./panelE/
 
-rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/ChIPseq_quantification/scripts_MDS/barplot_with_pvalues_from_DEseq2.R ./PanelE/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/ChIPseq_quantification/scripts_MDS/barplot_with_pvalues_from_DEseq2.R ./panelE/
 
 
 # Remove not needed files
