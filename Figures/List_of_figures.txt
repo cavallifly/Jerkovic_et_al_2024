@@ -1,0 +1,25 @@
+Figure 1: a Score map in ESC and NPC WT:
+            chr18:53,859,000-56,456,400 at resolution 5kb
+       	  b Insulation profiles per replicate in ESC and NPC WT:
+	    chr18:53,859,000-56,456,400 at resolution 5kb (r5kb) and window 400kb (w400kb)
+Figure 2: a Score map in NPC WT and NPC polyA:
+       	    chr18:54,680,000-56,000,000 at resolution 5kb
+       	  b Insulation profiles per replicate in ESC and NPC WT:
+	    chr18:54,680,000-56,000,000 at resolution 5kb (r5kb) and window 400kb (w400kb)
+
+Figure 3: a
+          b
+	  e
+Figure 5: a, b, e, and f  
+Figure 6: b, c, and d 
+
+Ext. Figure 1: c-k
+Ext. Figure 4: c, d, e, and g
+
+Ext. Figure 5: a, c, d, e, f, and g
+
+Ext. Figure 6: a, b, d, e, f, g, i, j, and k
+Ext. Figure 8: all panels
+Ext. Figure 9: all panels  
+
+- Which region did we show in Figure 1a?
