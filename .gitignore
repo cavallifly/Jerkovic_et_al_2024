@@ -1,0 +1,4 @@
+*.zip
+*.bw
+*.bigWig
+synchronize_data.sh

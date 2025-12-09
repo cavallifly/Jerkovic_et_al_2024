@@ -1,0 +1,389 @@
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: ‘rstatix’
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+[1] ZFP608_ddCt_values_dA_dB_dAB_dCTCF_for_anova_noOutlier.bed
+  primer cellType condition        ddCt    values
+1  ex1-2      NPC        wt  0.00000000 1.0000000
+2  ex1-2      NPC        wt  0.00000000 1.0000000
+3  ex1-2      NPC        wt  0.00000000 1.0000000
+4  ex1-2      NPC        dA -0.51500000 1.4289941
+5  ex1-2      NPC        dA -0.03333333 1.0233739
+6  ex1-2      NPC        dA  0.24000000 0.8467453
+[1] ex1-2
+[1] ### Get summary statistics ###
+# A tibble: 5 × 5
+  condition  variable     n  mean    sd
+  <fct>      <fct>    <dbl> <dbl> <dbl>
+1 NPC_wt     values       3 1     0    
+2 NPC_dA     values       3 1.1   0.299
+3 NPC_dAB    values       3 0.652 0.127
+4 NPC_dB     values       3 0.879 0.265
+5 NPC_dCTCFA values       4 1.35  0.499
+[1] ### Check assumptions ###
+[1] 1) Checking the presence of outliers
+[1] No outliers found: This assumption is verified
+[1] 
+[1] 2) Checking normality assumption
+[1] # Building the linear model
+[1] # Creating a QQ plot of residuals
+[1] ### Compute Shapiro-Wilk test of normality ###
+# A tibble: 1 × 3
+  variable         statistic p.value
+  <chr>                <dbl>   <dbl>
+1 residuals(model)     0.959   0.648
+[1] In the QQ plot, as all the points fall approximately along the reference line, we can assume normality.
+[1] This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.648096530716505),
+[1] so we can assume normality.
+[1] 
+[1] 3) Checking homogeneity of variance assumption
+[1] This can be checked using the Levene’s test:
+# A tibble: 1 × 4
+    df1   df2 statistic      p
+  <int> <int>     <dbl>  <dbl>
+1     4    11      4.99 0.0154
+[1] The Levene’s test is not significant (p > 0.0153520698549175). Therefore, we can assume the homogeneity of variances in the different groups.
+[1] ### Computation of the one-way ANOVA test ###
+[1] In the R code below, the asterisk represents the interaction effect and the main effect of each variable (and all lower-order interactions).
+ANOVA Table (type II tests)
+
+     Effect DFn DFd    F     p p<.05   ges
+1 condition   4  11 2.29 0.125       0.454
+[1] There was no statistically significant interaction between cell type and condition for 2^(-ddCt)
+[1] 
+[1] ### Post-hoct tests ###
+[1] ### Procedure for significant one-way interaction ###
+[1] ### Compute pairwise comparisons ###
+[1] To determine which group means are different. We’ll now perform multiple pairwise comparisons between the different conditions.
+[1] You can run and interpret all possible pairwise comparisons using a Bonferroni adjustment.
+[1] This can be easily done using the function emmeans_test() [rstatix package], a wrapper around the emmeans package,
+[1] which needs to be installed. Emmeans stands for estimated marginal means (aka least square means or adjusted means).
+[1] Compare the values of the different cellType levels by condition levels:
+[1] 
+[1] ### Visualization: box plots with p-values
+      .y.  group1     group2 n1 n2      p p.signif p.adj p.adj.signif
+1  values  NPC_wt     NPC_dA  3  3 0.7060       ns 1.000           ns
+2  values  NPC_wt    NPC_dAB  3  3 0.2040       ns 1.000           ns
+3  values  NPC_dA    NPC_dAB  3  3 0.1100       ns 1.000           ns
+4  values  NPC_wt     NPC_dB  3  3 0.6490       ns 1.000           ns
+5  values  NPC_dA     NPC_dB  3  3 0.4110       ns 1.000           ns
+6  values NPC_dAB     NPC_dB  3  3 0.3960       ns 1.000           ns
+7  values  NPC_wt NPC_dCTCFA  3  4 0.1780       ns 1.000           ns
+8  values  NPC_dA NPC_dCTCFA  3  4 0.3280       ns 1.000           ns
+9  values NPC_dAB NPC_dCTCFA  3  4 0.0149        * 0.149           ns
+10 values  NPC_dB NPC_dCTCFA  3  4 0.0787       ns 0.787           ns
+   y.position              groups xmin xmax
+1     1.91352      NPC_wt, NPC_dA    1    2
+2     2.04632     NPC_wt, NPC_dAB    1    3
+3     2.17912      NPC_wt, NPC_dB    2    3
+4     2.31192  NPC_wt, NPC_dCTCFA    1    4
+5     2.44472     NPC_dA, NPC_dAB    2    4
+6     2.57752      NPC_dA, NPC_dB    3    4
+7     2.71032  NPC_dA, NPC_dCTCFA    1    5
+8     2.84312     NPC_dAB, NPC_dB    2    5
+9     2.97592 NPC_dAB, NPC_dCTCFA    3    5
+10    3.10872  NPC_dB, NPC_dCTCFA    4    5
+[1] 
+[1] ex3
+[1] ### Get summary statistics ###
+# A tibble: 5 × 5
+  condition  variable     n  mean    sd
+  <fct>      <fct>    <dbl> <dbl> <dbl>
+1 NPC_wt     values       4 1     0    
+2 NPC_dA     values       3 1.16  0.184
+3 NPC_dAB    values       3 0.935 0.341
+4 NPC_dB     values       3 0.956 0.135
+5 NPC_dCTCFA values       4 1.18  0.182
+[1] ### Check assumptions ###
+[1] 1) Checking the presence of outliers
+[1] No outliers found: This assumption is verified
+[1] 
+[1] 2) Checking normality assumption
+[1] # Building the linear model
+[1] # Creating a QQ plot of residuals
+[1] ### Compute Shapiro-Wilk test of normality ###
+# A tibble: 1 × 3
+  variable         statistic p.value
+  <chr>                <dbl>   <dbl>
+1 residuals(model)     0.957   0.577
+[1] In the QQ plot, as all the points fall approximately along the reference line, we can assume normality.
+[1] This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.576647442656847),
+[1] so we can assume normality.
+[1] 
+[1] 3) Checking homogeneity of variance assumption
+[1] This can be checked using the Levene’s test:
+# A tibble: 1 × 4
+    df1   df2 statistic     p
+  <int> <int>     <dbl> <dbl>
+1     4    12      1.41 0.288
+[1] The Levene’s test is not significant (p > 0.288344213007043). Therefore, we can assume the homogeneity of variances in the different groups.
+[1] ### Computation of the one-way ANOVA test ###
+[1] In the R code below, the asterisk represents the interaction effect and the main effect of each variable (and all lower-order interactions).
+ANOVA Table (type II tests)
+
+     Effect DFn DFd     F     p p<.05   ges
+1 condition   4  12 1.243 0.345       0.293
+[1] There was no statistically significant interaction between cell type and condition for 2^(-ddCt)
+[1] 
+[1] ### Post-hoct tests ###
+[1] ### Procedure for significant one-way interaction ###
+
+[1] ### Visualization: box plots with p-values
+      .y.  group1     group2 n1 n2     p p.signif p.adj p.adj.signif y.position
+1  values  NPC_wt     NPC_dA  4  3 0.292       ns     1           ns   1.482720
+2  values  NPC_wt    NPC_dAB  4  3 0.664       ns     1           ns   1.540187
+3  values  NPC_dA    NPC_dAB  3  3 0.174       ns     1           ns   1.597653
+4  values  NPC_wt     NPC_dB  4  3 0.766       ns     1           ns   1.655120
+5  values  NPC_dA     NPC_dB  3  3 0.213       ns     1           ns   1.712587
+6  values NPC_dAB     NPC_dB  3  3 0.898       ns     1           ns   1.770053
+7  values  NPC_wt NPC_dCTCFA  4  4 0.206       ns     1           ns   1.827520
+8  values  NPC_dA NPC_dCTCFA  3  4 0.893       ns     1           ns   1.884987
+9  values NPC_dAB NPC_dCTCFA  3  4 0.118       ns     1           ns   1.942453
+10 values  NPC_dB NPC_dCTCFA  3  4 0.149       ns     1           ns   1.999920
+                groups xmin xmax
+1       NPC_wt, NPC_dA    1    2
+2      NPC_wt, NPC_dAB    1    3
+3       NPC_wt, NPC_dB    2    3
+4   NPC_wt, NPC_dCTCFA    1    4
+5      NPC_dA, NPC_dAB    2    4
+6       NPC_dA, NPC_dB    3    4
+7   NPC_dA, NPC_dCTCFA    1    5
+8      NPC_dAB, NPC_dB    2    5
+9  NPC_dAB, NPC_dCTCFA    3    5
+10  NPC_dB, NPC_dCTCFA    4    5
+[1] 
+[1] ex4-5
+[1] ### Get summary statistics ###
+# A tibble: 5 × 5
+  condition  variable     n  mean    sd
+  <fct>      <fct>    <dbl> <dbl> <dbl>
+1 NPC_wt     values       4 1     0    
+2 NPC_dA     values       3 1.06  0.098
+3 NPC_dAB    values       3 0.859 0.253
+4 NPC_dB     values       3 0.861 0.168
+5 NPC_dCTCFA values       4 1.08  0.152
+[1] ### Check assumptions ###
+[1] 1) Checking the presence of outliers
+[1] No outliers found: This assumption is verified
+[1] 
+[1] 2) Checking normality assumption
+[1] # Building the linear model
+[1] # Creating a QQ plot of residuals
+[1] ### Compute Shapiro-Wilk test of normality ###
+# A tibble: 1 × 3
+  variable         statistic p.value
+  <chr>                <dbl>   <dbl>
+1 residuals(model)     0.947   0.411
+[1] In the QQ plot, as all the points fall approximately along the reference line, we can assume normality.
+[1] This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.411272243356156),
+[1] so we can assume normality.
+[1] 
+[1] 3) Checking homogeneity of variance assumption
+[1] This can be checked using the Levene’s test:
+# A tibble: 1 × 4
+    df1   df2 statistic     p
+  <int> <int>     <dbl> <dbl>
+1     4    12      1.19 0.364
+[1] The Levene’s test is not significant (p > 0.36430422435252). Therefore, we can assume the homogeneity of variances in the different groups.
+[1] ### Computation of the one-way ANOVA test ###
+[1] In the R code below, the asterisk represents the interaction effect and the main effect of each variable (and all lower-order interactions).
+ANOVA Table (type II tests)
+
+     Effect DFn DFd    F     p p<.05   ges
+1 condition   4  12 1.62 0.233       0.351
+[1] There was no statistically significant interaction between cell type and condition for 2^(-ddCt)
+[1] 
+[1] ### Post-hoct tests ###
+[1] ### Procedure for significant one-way interaction ###
+[1] ### Compute pairwise comparisons ###
+[1] To determine which group means are different. We’ll now perform multiple pairwise comparisons between the different conditions.
+[1] You can run and interpret all possible pairwise comparisons using a Bonferroni adjustment.
+[1] This can be easily done using the function emmeans_test() [rstatix package], a wrapper around the emmeans package,
+[1] which needs to be installed. Emmeans stands for estimated marginal means (aka least square means or adjusted means).
+[1] Compare the values of the different cellType levels by condition levels:
+[1] 
+[1] ### Visualization: box plots with p-values
+      .y.  group1     group2 n1 n2      p p.signif p.adj p.adj.signif
+1  values  NPC_wt     NPC_dA  4  3 0.6210       ns 1.000           ns
+2  values  NPC_wt    NPC_dAB  4  3 0.2430       ns 1.000           ns
+3  values  NPC_dA    NPC_dAB  3  3 0.1310       ns 1.000           ns
+4  values  NPC_wt     NPC_dB  4  3 0.2520       ns 1.000           ns
+5  values  NPC_dA     NPC_dB  3  3 0.1360       ns 1.000           ns
+6  values NPC_dAB     NPC_dB  3  3 0.9820       ns 1.000           ns
+7  values  NPC_wt NPC_dCTCFA  4  4 0.4600       ns 1.000           ns
+8  values  NPC_dA NPC_dCTCFA  3  4 0.8460       ns 1.000           ns
+9  values NPC_dAB NPC_dCTCFA  3  4 0.0772       ns 0.772           ns
+10 values  NPC_dB NPC_dCTCFA  3  4 0.0805       ns 0.805           ns
+   y.position              groups xmin xmax
+1    1.274400      NPC_wt, NPC_dA    1    2
+2    1.307067     NPC_wt, NPC_dAB    1    3
+3    1.339733      NPC_wt, NPC_dB    2    3
+4    1.372400  NPC_wt, NPC_dCTCFA    1    4
+5    1.405067     NPC_dA, NPC_dAB    2    4
+6    1.437733      NPC_dA, NPC_dB    3    4
+7    1.470400  NPC_dA, NPC_dCTCFA    1    5
+8    1.503067     NPC_dAB, NPC_dB    2    5
+9    1.535733 NPC_dAB, NPC_dCTCFA    3    5
+10   1.568400  NPC_dB, NPC_dCTCFA    4    5
+[1] 
+[1] ex5
+[1] ### Get summary statistics ###
+# A tibble: 5 × 5
+  condition  variable     n  mean    sd
+  <fct>      <fct>    <dbl> <dbl> <dbl>
+1 NPC_wt     values       4  1    0    
+2 NPC_dA     values       3  1.25 0.214
+3 NPC_dAB    values       3  1.02 0.446
+4 NPC_dB     values       3  1.16 0.338
+5 NPC_dCTCFA values       3  1.56 0.07 
+[1] ### Check assumptions ###
+[1] 1) Checking the presence of outliers
+[1] No outliers found: This assumption is verified
+[1] 
+[1] 2) Checking normality assumption
+[1] # Building the linear model
+[1] # Creating a QQ plot of residuals
+[1] ### Compute Shapiro-Wilk test of normality ###
+# A tibble: 1 × 3
+  variable         statistic p.value
+  <chr>                <dbl>   <dbl>
+1 residuals(model)     0.915   0.142
+[1] In the QQ plot, as all the points fall approximately along the reference line, we can assume normality.
+[1] This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.142034693146224),
+[1] so we can assume normality.
+[1] 
+[1] 3) Checking homogeneity of variance assumption
+[1] This can be checked using the Levene’s test:
+# A tibble: 1 × 4
+    df1   df2 statistic     p
+  <int> <int>     <dbl> <dbl>
+1     4    11      1.05 0.424
+[1] The Levene’s test is not significant (p > 0.423604977788824). Therefore, we can assume the homogeneity of variances in the different groups.
+[1] ### Computation of the one-way ANOVA test ###
+[1] In the R code below, the asterisk represents the interaction effect and the main effect of each variable (and all lower-order interactions).
+ANOVA Table (type II tests)
+
+     Effect DFn DFd     F     p p<.05   ges
+1 condition   4  11 2.472 0.106       0.473
+[1] There was no statistically significant interaction between cell type and condition for 2^(-ddCt)
+[1] 
+[1] ### Post-hoct tests ###
+[1] ### Procedure for significant one-way interaction ###
+[1] ### Compute pairwise comparisons ###
+[1] To determine which group means are different. We’ll now perform multiple pairwise comparisons between the different conditions.
+[1] You can run and interpret all possible pairwise comparisons using a Bonferroni adjustment.
+[1] This can be easily done using the function emmeans_test() [rstatix package], a wrapper around the emmeans package,
+[1] which needs to be installed. Emmeans stands for estimated marginal means (aka least square means or adjusted means).
+[1] Compare the values of the different cellType levels by condition levels:
+[1] 
+[1] ### Visualization: box plots with p-values
+      .y.  group1     group2 n1 n2      p p.signif p.adj p.adj.signif
+1  values  NPC_wt     NPC_dA  4  3 0.2270       ns 1.000           ns
+2  values  NPC_wt    NPC_dAB  4  3 0.9250       ns 1.000           ns
+3  values  NPC_dA    NPC_dAB  3  3 0.2920       ns 1.000           ns
+4  values  NPC_wt     NPC_dB  4  3 0.4330       ns 1.000           ns
+5  values  NPC_dA     NPC_dB  3  3 0.6710       ns 1.000           ns
+6  values NPC_dAB     NPC_dB  3  3 0.5160       ns 1.000           ns
+7  values  NPC_wt NPC_dCTCFA  4  3 0.0159        * 0.159           ns
+8  values  NPC_dA NPC_dCTCFA  3  3 0.1710       ns 1.000           ns
+9  values NPC_dAB NPC_dCTCFA  3  3 0.0260        * 0.260           ns
+10 values  NPC_dB NPC_dCTCFA  3  3 0.0839       ns 0.839           ns
+   y.position              groups xmin xmax
+1    1.716800      NPC_wt, NPC_dA    1    2
+2    1.802133     NPC_wt, NPC_dAB    1    3
+3    1.887467      NPC_wt, NPC_dB    2    3
+4    1.972800  NPC_wt, NPC_dCTCFA    1    4
+5    2.058133     NPC_dA, NPC_dAB    2    4
+6    2.143467      NPC_dA, NPC_dB    3    4
+7    2.228800  NPC_dA, NPC_dCTCFA    1    5
+8    2.314133     NPC_dAB, NPC_dB    2    5
+9    2.399467 NPC_dAB, NPC_dCTCFA    3    5
+10   2.484800  NPC_dB, NPC_dCTCFA    4    5
+[1] 
+[1] ex6
+[1] ### Get summary statistics ###
+# A tibble: 5 × 5
+  condition  variable     n  mean    sd
+  <fct>      <fct>    <dbl> <dbl> <dbl>
+1 NPC_wt     values       4  1    0    
+2 NPC_dA     values       3  1.14 0.19 
+3 NPC_dAB    values       3  1.04 0.444
+4 NPC_dB     values       3  1.01 0.256
+5 NPC_dCTCFA values       4  1.45 0.102
+[1] ### Check assumptions ###
+[1] 1) Checking the presence of outliers
+[1] No outliers found: This assumption is verified
+[1] 
+[1] 2) Checking normality assumption
+[1] # Building the linear model
+[1] # Creating a QQ plot of residuals
+[1] ### Compute Shapiro-Wilk test of normality ###
+# A tibble: 1 × 3
+  variable         statistic p.value
+  <chr>                <dbl>   <dbl>
+1 residuals(model)     0.931   0.228
+[1] In the QQ plot, as all the points fall approximately along the reference line, we can assume normality.
+[1] This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.227715348292677),
+[1] so we can assume normality.
+[1] 
+[1] 3) Checking homogeneity of variance assumption
+[1] This can be checked using the Levene’s test:
+# A tibble: 1 × 4
+    df1   df2 statistic     p
+  <int> <int>     <dbl> <dbl>
+1     4    12      1.13 0.386
+[1] The Levene’s test is not significant (p > 0.386151378782649). Therefore, we can assume the homogeneity of variances in the different groups.
+[1] ### Computation of the one-way ANOVA test ###
+[1] In the R code below, the asterisk represents the interaction effect and the main effect of each variable (and all lower-order interactions).
+ANOVA Table (type II tests)
+
+     Effect DFn DFd    F     p p<.05  ges
+1 condition   4  12 2.56 0.093       0.46
+[1] There was no statistically significant interaction between cell type and condition for 2^(-ddCt)
+[1] 
+[1] ### Post-hoct tests ###
+[1] ### Procedure for significant one-way interaction ###
+[1] ### Compute pairwise comparisons ###
+[1] To determine which group means are different. We’ll now perform multiple pairwise comparisons between the different conditions.
+[1] You can run and interpret all possible pairwise comparisons using a Bonferroni adjustment.
+[1] This can be easily done using the function emmeans_test() [rstatix package], a wrapper around the emmeans package,
+[1] which needs to be installed. Emmeans stands for estimated marginal means (aka least square means or adjusted means).
+[1] Compare the values of the different cellType levels by condition levels:
+[1] 
+[1] ### Visualization: box plots with p-values
+      .y.  group1     group2 n1 n2      p p.signif p.adj p.adj.signif
+1  values  NPC_wt     NPC_dA  4  3 0.4370       ns 1.000           ns
+2  values  NPC_wt    NPC_dAB  4  3 0.8000       ns 1.000           ns
+3  values  NPC_dA    NPC_dAB  3  3 0.6200       ns 1.000           ns
+4  values  NPC_wt     NPC_dB  4  3 0.9600       ns 1.000           ns
+5  values  NPC_dA     NPC_dB  3  3 0.4940       ns 1.000           ns
+6  values NPC_dAB     NPC_dB  3  3 0.8480       ns 1.000           ns
+7  values  NPC_wt NPC_dCTCFA  4  4 0.0170        * 0.170           ns
+8  values  NPC_dA NPC_dCTCFA  3  4 0.1040       ns 1.000           ns
+9  values NPC_dAB NPC_dCTCFA  3  4 0.0399        * 0.399           ns
+10 values  NPC_dB NPC_dCTCFA  3  4 0.0273        * 0.273           ns
+   y.position              groups xmin xmax
+1    1.617120      NPC_wt, NPC_dA    1    2
+2    1.690587     NPC_wt, NPC_dAB    1    3
+3    1.764053      NPC_wt, NPC_dB    2    3
+4    1.837520  NPC_wt, NPC_dCTCFA    1    4
+5    1.910987     NPC_dA, NPC_dAB    2    4
+6    1.984453      NPC_dA, NPC_dB    3    4
+7    2.057920  NPC_dA, NPC_dCTCFA    1    5
+8    2.131387     NPC_dAB, NPC_dB    2    5
+9    2.204853 NPC_dAB, NPC_dCTCFA    3    5
+10   2.278320  NPC_dB, NPC_dCTCFA    4    5
+[1] 

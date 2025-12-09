@@ -1,0 +1,49 @@
+mkdir -p panelA panelB panelD panelE panelF panelG panelI panelJ panelK
+
+### Score map for DB panelA
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/03_plots_cHiC_and_ChIPseq/scoreMapsk250kexp500_chr18_54680000bp_56000000bp_r5000bp_annot_FALSE_NPC_DBDStoNPCWT_merge_triang.png ./panelA/
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/03_plots_cHiC_and_ChIPseq/scoreMapsk250kexp500_chr18_54680000bp_56000000bp_r5000bp_NPC_DBDStoNPCWT_merge.tsv ./panelA/
+
+### Insulation profile NPC DB and NPC WT panelB
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_DB_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelB/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_WT_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelB/
+
+### DB vs. WT differential map and Insulation panelD
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_chr18_54680000_56000000_r5000bp_k250_kexp250_NPC_DB_vs_NPC_WT_k250_kexp250.tsv ./panelD/
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_BonevScale/*NPC_DB_vs_NPC_WT* ./panelD/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_DB_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelD/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_WT_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelD/
+
+
+
+### Score map for DC2C3 panelE
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/03_plots_cHiC_and_ChIPseq/scoreMapsk250kexp500_chr18_54680000bp_56000000bp_r5000bp_annot_FALSE_NPC_DC2C3DStoNPCWT_merge_triang.png ./panelE/
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/03_plots_cHiC_and_ChIPseq/scoreMapsk250kexp500_chr18_54680000bp_56000000bp_r5000bp_NPC_DC2C3DStoNPCWT_merge.tsv ./panelE/
+
+### Insulation profile NPC DC2C3 and NPC WT panelF
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_DC2C3_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelF/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_WT_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelF/
+
+### DC2C3 vs. WT differential map and Insulation panelG
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_chr18_54680000_56000000_r5000bp_k250_kexp250_NPC_DC2C3_vs_NPC_WT_k250_kexp250.tsv ./panelG/
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_BonevScale/*NPC_DC2C3_vs_NPC_WT* ./panelG/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_DC2C3_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelG/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_WT_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelG/
+
+
+
+### Score map for DAC2C3 panelI
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/03_plots_cHiC_and_ChIPseq/scoreMapsk250kexp500_chr18_54680000bp_56000000bp_r5000bp_annot_FALSE_NPC_DAC2C3DStoNPCWT_merge_triang.png ./panelI/
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/03_plots_cHiC_and_ChIPseq/scoreMapsk250kexp500_chr18_54680000bp_56000000bp_r5000bp_NPC_DAC2C3DStoNPCWT_merge.tsv ./panelI/
+
+### Insulation profile NPC DAC2C3 and NPC WT panelJ
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_DAC2C3_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelJ/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_WT_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelJ/
+
+### DAC2C3 vs. WT differential map and Insulation panelK
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_chr18_54680000_56000000_r5000bp_k250_kexp250_NPC_DAC2C3_vs_NPC_WT_k250_kexp250.tsv ./panelK/
+rsync -avz nikita:/zdata/data/mdistefano/2021_04_13_Project_with_Ivana/02_differential_maps/ShamanScores/diffMaps_BonevScale/*NPC_DAC2C3_vs_NPC_WT* ./panelK/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_DAC2C3_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelK/
+rsync -avz /run/user/1001/gvfs/smb-share\:server\=archive.igh.internal\,share\=cavalli/commun/Marco/2021_04_13_Project_with_Ivana/03_insulation_analysis_cooler/insulation_profiles_cooler/Insulation_chic_NPC_WT_Rep?_mm10_IJ_w400kb_r5kb_cooler_chr18_54680000_56000000bp.bedGraph ./panelK/
+
+rm -fvr *~
